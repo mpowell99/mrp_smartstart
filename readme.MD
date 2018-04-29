@@ -31,6 +31,7 @@ Installation and Configuration Steps
 
 
 1. Add New Custom Fields
+
     **Field Group:** Position
     *Fields*
 
@@ -52,6 +53,7 @@ Installation and Configuration Steps
     LinkedIn | linkedin | Text
     Google Plus | googleplus | Text
     Email | email | Email
+
     *Location:*
     Show this field group if {post type} {is equal to} {team}
 
@@ -69,7 +71,8 @@ Installation and Configuration Steps
 1. Configure the Contact Form
     Edit "Contact form 1" and paste in following:
 
-    `<p class="input-block">
+    ```
+    <p class="input-block">
     <label> <strong>Your Name</strong> (required)
         [text* your-name] </label>
     </p>
@@ -89,7 +92,8 @@ Installation and Configuration Steps
         [textarea your-message] </label>
     </p>
 
-    [submit "Send"]`
+    [submit "Send"]
+    ```
 
     Then add the short-code to the Contact Page
 

@@ -33,39 +33,39 @@ Installation and Configuration Steps
 1. Add New Custom Fields
 
     **Field Group:** Position
-    *Fields*
 
-    Label | Name | Type
-    ----- | ---- | ----
-    Position | position | text
+    *Fields:*
 
-    *Location:*
-    Show this field group if {post type} {is equal to} {team}
+        Label | Name | Type
+        ----- | ---- | ----
+        Position | position | text
+
+    *Location:* Show this field group if {post type} {is equal to} {team}
 
     **Field Group:** Social Media
+
     *Fields:*
 
-    Label | Name | Type
-    ----- | ---- | ----
-    Twitter | twitter | Text
-    Facebook | facebook | Text
-    Skype | skype | Text
-    LinkedIn | linkedin | Text
-    Google Plus | googleplus | Text
-    Email | email | Email
+        Label | Name | Type
+        ----- | ---- | ----
+        Twitter | twitter | Text
+        Facebook | facebook | Text
+        Skype | skype | Text
+        LinkedIn | linkedin | Text
+        Google Plus | googleplus | Text
+        Email | email | Email
 
-    *Location:*
-    Show this field group if {post type} {is equal to} {team}
+    *Location:* Show this field group if {post type} {is equal to} {team}
 
     **Field Group: Website**
+
     *Fields:*
 
-    Label | Name | Type
-    ----- | ---- | ----
-    Website | website | text
+        Label | Name | Type
+        ----- | ---- | ----
+        Website | website | text
 
-    *Location:*
-    Show this field group if {post type} {is equal to} {portfolio}
+    *Location:* Show this field group if {post type} {is equal to} {portfolio}
 
 
 1. Configure the Contact Form

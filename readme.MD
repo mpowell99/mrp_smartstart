@@ -13,12 +13,13 @@
 A sample theme developed to mirror the static HTML page for SmartStart
 
 ## Installation and Configuration
-MRP SmartStart Theme
-Installation and Configuration Steps
 
 1. Install the theme
-`# cd wp-config/themes/`
-`# git clone https://github.com/mpowell99/mrp_smartstart`
+
+    ```
+    # cd wp-config/themes/
+    # git clone https://github.com/mpowell99/mrp_smartstart
+    ```
 
 
 1. Activate theme from WP-Admin

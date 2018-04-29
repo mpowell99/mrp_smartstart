@@ -25,87 +25,90 @@ Installation and Configuration Steps
 
 
 1. Install plugins
- * Advanced Custom Fields
- * Contact Form 7
- * WP-PageNavi
+    * Advanced Custom Fields
+    * Contact Form 7
+    * WP-PageNavi
 
 
 1. Add New Custom Fields
-**Field Group:** Position
-*Fields*
-Label | Name | Type
------ | ---- | ----
-Position | position | text
+    **Field Group:** Position
+    *Fields*
 
-*Location:*
-Show this field group if {post type} {is equal to} {team}
+    Label | Name | Type
+    ----- | ---- | ----
+    Position | position | text
 
-**Field Group:** Social Media
-*Fields:*
-Label | Name | Type
------ | ---- | ----
-Twitter | twitter | Text
-Facebook | facebook | Text
-Skype | skype | Text
-LinkedIn | linkedin | Text
-Google Plus | googleplus | Text
-Email | email | Email
-*Location:*
-Show this field group if {post type} {is equal to} {team}
+    *Location:*
+    Show this field group if {post type} {is equal to} {team}
 
-**Field Group: Website**
-*Fields:*
-Label | Name | Type
------ | ---- | ----
-Website | website | text
+    **Field Group:** Social Media
+    *Fields:*
 
-*Location:*
-Show this field group if {post type} {is equal to} {portfolio}
+    Label | Name | Type
+    ----- | ---- | ----
+    Twitter | twitter | Text
+    Facebook | facebook | Text
+    Skype | skype | Text
+    LinkedIn | linkedin | Text
+    Google Plus | googleplus | Text
+    Email | email | Email
+    *Location:*
+    Show this field group if {post type} {is equal to} {team}
+
+    **Field Group: Website**
+    *Fields:*
+
+    Label | Name | Type
+    ----- | ---- | ----
+    Website | website | text
+
+    *Location:*
+    Show this field group if {post type} {is equal to} {portfolio}
 
 
 1. Configure the Contact Form
-Edit "Contact form 1" and paste in following:
+    Edit "Contact form 1" and paste in following:
 
-`<p class="input-block">
-<label> <strong>Your Name</strong> (required)
-    [text* your-name] </label>
-</p>
+    `<p class="input-block">
+    <label> <strong>Your Name</strong> (required)
+        [text* your-name] </label>
+    </p>
 
-<p class="input-block">
-<label> <strong>Your Email</strong> (required)
-    [email* your-email] </label>
-</p>
+    <p class="input-block">
+    <label> <strong>Your Email</strong> (required)
+        [email* your-email] </label>
+    </p>
 
-<p class="input-block">
-<label> <strong>Subject</strong>
-    [text your-subject] </label>
-</p>
+    <p class="input-block">
+    <label> <strong>Subject</strong>
+        [text your-subject] </label>
+    </p>
 
-<p class="textarea-block">
-<label> <strong>Your Message</strong>
-    [textarea your-message] </label>
-</p>
+    <p class="textarea-block">
+    <label> <strong>Your Message</strong>
+        [textarea your-message] </label>
+    </p>
 
-[submit "Send"]`
+    [submit "Send"]`
 
-Then add the short-code to the Contact Page
+    Then add the short-code to the Contact Page
 
 
 1. Customize the Theme
-**Site Identity**
-	*Logo:* Add Logo
+    **Site Identity**
+    	*Logo:* Add Logo
 
-**Custom Headers**
-	Provide appropriate headers and descriptions to each field.
+    **Custom Headers**
+    	Provide appropriate headers and descriptions to each field.
 
-**Contact Page Settings**
+    **Contact Page Settings**
 
 
 1. Add Some Team Members
 
 
 1. Add Some Projects
-*Don't forget to mark four of them as "Featured"*
+    *Don't forget to mark four of them as "Featured"*
 
 
 1. Add Some Blog Posts

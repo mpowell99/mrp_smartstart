@@ -17,7 +17,7 @@ A sample theme developed to mirror the static HTML page for SmartStart
 1. Install the theme
 
     ```
-    # cd wp-config/themes/
+    # cd wp-content/themes/
     # git clone https://github.com/mpowell99/mrp_smartstart
     ```
 

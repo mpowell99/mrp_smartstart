@@ -75,7 +75,7 @@ get_header(); ?>
 					?>
 			<p>
 				<a href="<?php echo esc_url( $the_website ); ?>" class="button">Launch Website</a>
-			</p>';
+			</p>
 					<?php
 				}
 			?>

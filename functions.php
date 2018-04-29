@@ -7,7 +7,6 @@
  * @version 1.0
  */
 
-define( 'MRP_THEME_DIR', get_template_directory() );
 define( 'MRP_THEME_URI', get_template_directory_uri() );
 
 /**
@@ -75,11 +74,10 @@ function mrp_scripts() {
 /**
  *  Register navigation menu
  */
-add_action( 'init', 'mrp_menus' );
-function mrp_menus() {
-    register_nav_menus( array( 'header-menu' => __( 'Header Menu' ) ) );
+add_action( 'init', 'mrp_register_menu' );
+function mrp_register_menu() {
+    register_nav_menus( array( 'header-menu' => 'Header Menu' ) );
 }
-
 
 /**
  *  Add class to the active item on the navigation menu
@@ -103,12 +101,12 @@ function create_posttypes() {
     register_post_type( 'team',
         array(
             'labels' => array(
-                'name'          => __( 'Our Team' ),
-                'singular_name' => __( 'Our Team' ),
-				'add_new_item'  => __( 'Add New Team Member' ),
-				'edit_item'     => __( 'Edit Team Member' ),
-				'new_item'      => __( 'New Team Member' ),
-				'view_item'     => __( 'View Team Member' ),
+                'name'          => 'Our Team',
+                'singular_name' => 'Our Team',
+				'add_new_item'  => 'Add New Team Member',
+				'edit_item'     => 'Edit Team Member',
+				'new_item'      => 'New Team Member',
+				'view_item'     => 'View Team Member',
             ),
             'public' => true,
             'has_archive' => true,
@@ -121,12 +119,12 @@ function create_posttypes() {
     register_post_type( 'portfolio',
         array(
             'labels' => array(
-                'name'          => __( 'Projects' ),
-                'singular_name' => __( 'Project' ),
-				'add_new_item'  => __( 'Add New Project' ),
-				'edit_item'     => __( 'Edit Project' ),
-				'new_item'      => __( 'New Project' ),
-				'view_item'     => __( 'View Project' ),
+                'name'          => 'Projects',
+                'singular_name' => 'Project',
+				'add_new_item'  => 'Add New Project',
+				'edit_item'     => 'Edit Project',
+				'new_item'      => 'New Project',
+				'view_item'     => 'View Project',
             ),
             'public' => true,
             'has_archive' => true,
@@ -150,15 +148,15 @@ function mrp_taxonomies_init() {
 		'skills',
 		'portfolio',
 		array(
-			'label' => __( 'Skills' ),
+			'label' => 'Skills',
 			'rewrite' => array( 'slug' => 'skill' ),
             'labels' => array(
-                'name'          => __( 'Skills' ),
-                'singular_name' => __( 'Skill' ),
-				'add_new_item'  => __( 'Add New Skill' ),
-				'edit_item'     => __( 'Edit Skill' ),
-				'new_item'      => __( 'New Skill' ),
-				'view_item'     => __( 'View Skill' ),
+                'name'          => 'Skills',
+                'singular_name' => 'Skill',
+				'add_new_item'  => 'Add New Skill',
+				'edit_item'     => 'Edit Skill',
+				'new_item'      => 'New Skill',
+				'view_item'     => 'View Skill',
             ),
 			'hierarchical' => TRUE,
 		)
@@ -169,15 +167,15 @@ function mrp_taxonomies_init() {
 		'disciplines',
 		'portfolio',
 		array(
-			'label' => __( 'Disciplines' ),
+			'label' => 'Disciplines',
 			'rewrite' => array( 'slug' => 'discipline' ),
             'labels' => array(
-                'name'          => __( 'Disciplines' ),
-                'singular_name' => __( 'Discipline' ),
-				'add_new_item'  => __( 'Add New Discipline' ),
-				'edit_item'     => __( 'Edit Discipline' ),
-				'new_item'      => __( 'New Discipline' ),
-				'view_item'     => __( 'View Discipline' ),
+                'name'          => 'Disciplines',
+                'singular_name' => 'Discipline',
+				'add_new_item'  => 'Add New Discipline',
+				'edit_item'     => 'Edit Discipline',
+				'new_item'      => 'New Discipline',
+				'view_item'     => 'View Discipline',
             ),
 			'hierarchical' => TRUE,
 		)
@@ -262,17 +260,15 @@ function mrp_move_comment_field_to_bottom( $fields ) {
  */
 add_action( 'admin_notices', 'mrp_admin_messages' );
 function mrp_admin_messages() {
-    include_once( ABSPATH.'wp-admin/includes/plugin.php' );
-
 	/* Define which plugins are required */
-    $aRequired_plugins = array(
+    $required_plugins = array(
         array(
 			'name'=>'Advanced Custom Fields',
 			'download'=>'http://wordpress.org/plugins/advanced-custom-fields/',
 			'path'=>'advanced-custom-fields/acf.php',
 		),
 		array(
-			'name' => 'Comment Form 7',
+			'name' => 'Contact Form 7',
 			'download' => 'https://wordpress.org/plugins/contact-form-7/',
 			'path' => 'contact-form-7/wp-contact-form-7.php',
 		),
@@ -284,21 +280,19 @@ function mrp_admin_messages() {
     );
 
 	/* Check for each required plugin */
-    $plugin_messages = array();
-    foreach ( $aRequired_plugins as $aPlugin ) {
+    $plugin_message = '';
+    foreach ( $required_plugins as $this_plugin ) {
         // Check if plugin exists
-        if ( ! is_plugin_active( $aPlugin['path'] ) ) {
-            $plugin_messages[] = "This theme requires plugin <b>".$aPlugin['name']."</b>. <a href='".$aPlugin['download']."' target='pluginwin'>Download</a>";
+        if ( ! is_plugin_active( $this_plugin['path'] ) ) {
+            $plugin_message .= "<b><a href='".$this_plugin['download']."'>".$this_plugin['name']."</a></b> and ";
         }
     }
 
-	/* If there were any errors, display them */
-    if ( count( $plugin_messages ) > 0 ) {
-		echo '<div style="margin: 20px 0px; width: 400px; background-color: white; border: 5px red solid; padding: 5px 10px; border-radius: 10px;">';
-        foreach ( $plugin_messages as $message ) {
-            echo '<p>'.$message.'</p>';
-        }
-		echo '</div>';
+	if ( $plugin_message ) {
+		/* strip off the last "and" */
+		$plugin_message = substr( $plugin_message, 0, -5 );
+		$message = '<div class="setting-error-mrp notice-warning settings-error notice is-dismissible"><p>This theme recommends the following plugins: '.$plugin_message.'</p></div>';
+		echo $message;
     }
 }
 
@@ -356,33 +350,77 @@ function mrp_save_isfeatured() {
  */
 add_action( 'customize_register', 'mrp_customize_register' );
 function mrp_customize_register( $wp_customize ) {
-	/* Inputs for the Team page */
-	$wp_customize->add_setting( 'team_title', array( 'default'   => 'Team' ) );
-	$wp_customize->add_setting( 'team_description', array( 'default'   => '' ) );
+	/* Inputs for the Site Identity section */
+	$wp_customize->add_setting( 'site_slogan', array(
+		'default'   => '',
+		'sanitize_callback' => 'sanitize_textarea_field',
+	));
 
-	/* Inputs for the Portfolio page */
-	$wp_customize->add_setting( 'portfolio_title', array( 'default'   => 'Portfolio' ) );
-	$wp_customize->add_setting( 'portfolio_description', array( 'default'   => '' ) );
+	/* Inputs for the Team section */
+	$wp_customize->add_setting( 'team_title', array(
+		'default'   => 'Team',
+		'sanitize_callback' => 'sanitize_text_field',
+	));
+	$wp_customize->add_setting( 'team_description', array(
+		'default'   => '',
+		'sanitize_callback' => 'sanitize_textarea_field',
+	));
 
-	/* Inputs for the Blog page */
-	$wp_customize->add_setting( 'blog_title', array( 'default'   => 'Our Blog' ) );
+	/* Inputs for the Portfolio section */
+	$wp_customize->add_setting( 'portfolio_title', array(
+		'default'   => 'Portfolio',
+		'sanitize_callback' => 'sanitize_text_field',
+	));
+	$wp_customize->add_setting( 'portfolio_description', array(
+		'default'   => '',
+		'sanitize_callback' => 'sanitize_textarea_field',
+	));
 
-	/* Inputs for the Contact page */
-	$wp_customize->add_setting( 'contact_title', array( 'default'   => 'Contact Us' ) );
-	$wp_customize->add_setting( 'contact_formhead', array( 'default'   => "Let's Keep in Touch") );
-	$wp_customize->add_setting( 'contact_address', array( 'default'   => '') );
+	/* Inputs for the Blog section */
+	$wp_customize->add_setting( 'blog_title', array(
+		'default'   => 'Our Blog',
+		'sanitize_callback' => 'sanitize_text_field',
+	));
+
+	/* Inputs for the Contact section */
+	$wp_customize->add_setting( 'contact_title', array(
+		'default'   => 'Contact Us',
+		'sanitize_callback' => 'sanitize_text_field',
+	));
+	$wp_customize->add_setting( 'contact_formhead', array(
+		'default'   => "Let's Keep in Touch",
+		'sanitize_callback' => 'sanitize_text_field',
+	));
+	$wp_customize->add_setting( 'contact_address', array(
+		'default'   => '',
+		'sanitize_callback' => 'sanitize_textarea_field',
+	));
 
 	/* New sections on the Customize Theme menu for our new options */
 	$wp_customize->add_section(
 		'mrp_custom_headers' , array(
-    		'title'      => __( 'Custom Headers', 'mrp-smartstart' ),
+    		'title'      => 'Custom Headers',
     		'priority'   => 30,
 		)
 	);
 	$wp_customize->add_section(
 		'mrp_contact_settings' , array(
-    		'title'      => __( 'Contact Page Settings', 'mrp-smartstart' ),
+    		'title'      => 'Contact Page Settings',
     		'priority'   => 35,
+		)
+	);
+
+	/* Admin controls for our new options: Site Identity */
+	$wp_customize->add_control(
+		new WP_Customize_Control(
+			$wp_customize,
+			'site_slogan',
+			array(
+				'label'      => 'Site Slogan',
+				'section'    => 'title_tagline',
+				'settings'   => 'site_slogan',
+				'type'       => 'textarea',
+			)
 		)
 	);
 
@@ -392,7 +430,7 @@ function mrp_customize_register( $wp_customize ) {
 			$wp_customize,
 			'team_title',
 			array(
-				'label'      => __( 'Team Page Header', 'mrp-smartstart' ),
+				'label'      => 'Team Page Header',
 				'section'    => 'mrp_custom_headers',
 				'settings'   => 'team_title',
 			)
@@ -403,7 +441,7 @@ function mrp_customize_register( $wp_customize ) {
 			$wp_customize,
 			'team_description',
 			array(
-				'label'      => __( 'Team Page Description', 'mrp-smartstart' ),
+				'label'      => 'Team Page Description',
 				'section'    => 'mrp_custom_headers',
 				'settings'   => 'team_description',
 				'type'       => 'textarea',
@@ -417,7 +455,7 @@ function mrp_customize_register( $wp_customize ) {
 			$wp_customize,
 			'portfolio_title',
 			array(
-				'label'      => __( 'Portfolio Page Header', 'mrp-smartstart' ),
+				'label'      => 'Portfolio Page Header',
 				'section'    => 'mrp_custom_headers',
 				'settings'   => 'portfolio_title',
 			)
@@ -428,7 +466,7 @@ function mrp_customize_register( $wp_customize ) {
 			$wp_customize,
 			'portfolio_description',
 			array(
-				'label'      => __( 'Portfolio Page Description', 'mrp-smartstart' ),
+				'label'      => 'Portfolio Page Description',
 				'section'    => 'mrp_custom_headers',
 				'settings'   => 'portfolio_description',
 				'type'       => 'textarea',
@@ -442,7 +480,7 @@ function mrp_customize_register( $wp_customize ) {
 			$wp_customize,
 			'blog_title',
 			array(
-				'label'      => __( 'Blog Page Header', 'mrp-smartstart' ),
+				'label'      => 'Blog Page Header',
 				'section'    => 'mrp_custom_headers',
 				'settings'   => 'blog_title',
 			)
@@ -455,7 +493,7 @@ function mrp_customize_register( $wp_customize ) {
 			$wp_customize,
 			'contact_title',
 			array(
-				'label'      => __( 'Contact Page Title', 'mrp-smartstart' ),
+				'label'      => 'Contact Page Title',
 				'section'    => 'mrp_contact_settings',
 				'settings'   => 'contact_title',
 			)
@@ -466,7 +504,7 @@ function mrp_customize_register( $wp_customize ) {
 			$wp_customize,
 			'contact_formhead',
 			array(
-				'label'      => __( 'Contact Form Header', 'mrp-smartstart' ),
+				'label'      => 'Contact Form Header',
 				'section'    => 'mrp_contact_settings',
 				'settings'   => 'contact_formhead',
 			)
@@ -477,13 +515,123 @@ function mrp_customize_register( $wp_customize ) {
 			$wp_customize,
 			'contact_address',
 			array(
-				'label'      => __( 'Contact Address', 'mrp-smartstart' ),
+				'label'      => 'Contact Address',
 				'section'    => 'mrp_contact_settings',
 				'settings'   => 'contact_address',
 				'type'       => 'textarea',
 			)
 		)
 	);
+}
+
+/**
+ * Define content width, if it's not already defined
+ */
+if ( ! isset( $content_width ) ) $content_width = 940;
+
+
+/**
+ * Create the Pages that this theme assumes exist: Blog, Contact and Front Page
+ */
+add_action( 'after_switch_theme', 'mrp_initialize_theme' );
+function mrp_initialize_theme() {
+	$contact_id   = mrp_createpage( 'Contact' );
+	$blog_id      = mrp_createpage( 'Blog' );
+	$frontpage_id = mrp_createpage( 'Front Page' );
+
+	// Let's make sure we're showing the front page, and just 3 blog entires per page
+	update_option( 'show_on_front', 'page' );
+	update_option( 'page_on_front', $frontpage_id );
+	update_option( 'page_for_posts', $blog_id );
+	update_option( 'posts_per_page', 3 );
+
+	// Let's set up our navigation menu
+	mrp_create_menu();
+
+	// Populate our new taxonomies with some terms
+	wp_insert_term( 'HTML/CSS', 'skills' );
+	wp_insert_term( 'Programming', 'skills' );
+	wp_insert_term( 'Information Architecture', 'skills' );
+	wp_insert_term( 'Database Design', 'skills' );
+	wp_insert_term( 'User Interface Design', 'skills' );
+	wp_insert_term( 'Performance Optimization', 'skills' );
+
+	wp_insert_term( 'Animation', 'disciplines' );
+	wp_insert_term( 'Web', 'disciplines' );
+	wp_insert_term( 'Design', 'disciplines' );
+	wp_insert_term( 'Illustration', 'disciplines' );
+	wp_insert_term( 'Photography', 'disciplines' );
+	wp_insert_term( 'Video', 'disciplines' );
+
+	wp_insert_term( 'Design', 'category' );
+	wp_insert_term( 'Awards & Recognition', 'category' );
+	wp_insert_term( 'Competitions', 'category' );
+	wp_insert_term( 'Travel & Tourism', 'category' );
+	wp_insert_term( 'Direct Mail', 'category' );
+	wp_insert_term( 'Environment', 'category' );
+	wp_insert_term( 'Tips & Tricks', 'category' );
+
+}
+
+function mrp_createpage( $page_title ) {
+	$page_slug = sanitize_title( $page_title );
+	$this_page = get_page_by_path( $page_slug, OBJECT, 'page' );
+
+	if ( !$this_page) {
+		$page_id = wp_insert_post( array('ID'=>'', 'post_name'=>'', 'post_title'=>$page_title, 'post_type'=>'page', 'post_status'=>'publish') );
+	} else {
+		$page_id = $this_page->ID;
+	}
+	return($page_id);
+}
+
+function mrp_create_menu() {
+	/* Check if my menu exists */
+	$menu_exists = wp_get_nav_menu_object( 'MRP Nav Menu' );
+
+	if (!$menu_exists) {
+		$menu_id = wp_create_nav_menu( 'MRP Nav Menu' );
+
+		// Set up default menu items
+    	wp_update_nav_menu_item( $menu_id, 0, array(
+	        'menu-item-title' =>  'Home',
+	        'menu-item-url' => home_url( '/' ),
+	        'menu-item-status' => 'publish',
+		));
+    	wp_update_nav_menu_item( $menu_id, 0, array(
+	        'menu-item-title' =>  'Our Team',
+			'menu-item-object' => 'team',
+			'menu-item-type' => 'post_type_archive',
+	        'menu-item-status' => 'publish',
+		));
+		$blog_page = get_page_by_path( 'blog', OBJECT, 'page' );
+    	wp_update_nav_menu_item( $menu_id, 0, array(
+			'menu-item-title' => 'Blog',
+    		'menu-item-object-id' => $blog_page->ID,
+		    'menu-item-object' => 'page',
+		    'menu-item-status' => 'publish',
+		    'menu-item-type' => 'post_type',
+		));
+    	wp_update_nav_menu_item( $menu_id, 0, array(
+	        'menu-item-title' =>  'Projects',
+			'menu-item-object' => 'portfolio',
+			'menu-item-type' => 'post_type_archive',
+	        'menu-item-status' => 'publish',
+		));
+		$contact_page = get_page_by_path( 'contact', OBJECT, 'page' );
+    	wp_update_nav_menu_item( $menu_id, 0, array(
+	        'menu-item-title' => 'Contact',
+    		'menu-item-object-id' => $contact_page->ID,
+		    'menu-item-object' => 'page',
+		    'menu-item-status' => 'publish',
+		    'menu-item-type' => 'post_type',
+		));
+
+		// Set the menu to the new location and save into database
+		$locations = get_theme_mod('nav_menu_locations');
+		$locations['header-menu'] = $menu_id;
+		set_theme_mod( 'nav_menu_locations', $locations );
+	}
 }
 
 ?>

@@ -84,8 +84,6 @@ get_header(); ?>
 
 	</article><!-- end .single-project -->
 
-<?php include_once( 'footer.php' ); ?>
-
 <?php
 get_footer();
 ?>

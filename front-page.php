@@ -13,8 +13,7 @@
 
 get_header(); ?>
 
-	<h2 class="slogan align-center">We are a group of experienced designers and developers.<br />
-	We set new standards in user experience &amp; make future happen.</h2>
+	<h2 class="slogan align-center"><?php echo get_theme_mod('site_slogan'); ?></h2>
 
 	<section id="features-slider" class="ss-slider">
         <?php
@@ -22,6 +21,7 @@ get_header(); ?>
             $args = array(
                 'post_type' => 'portfolio',
                 'posts_per_page' => 4,
+				'posts_limits' => 4,
 				'meta_key' => 'mrp_isfeatured',
 				'meta_value' => 'on',
             );

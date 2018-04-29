@@ -5,6 +5,7 @@ Author: Michael Powell
 Author URI: https://www.criticker.com/
 Description: A sample Wordpress theme adapted from the static SmartStart HTML page
 Version: 1.0
+Text Domain: mrp-smartstart
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
@@ -3701,3 +3702,15 @@ input.placeholder, textarea.placeholder { color: #b0b0b0; }
 		.social-links li:nth-child(8n) { margin-right: 15px; }
 
 }
+
+
+/* Needed for Wordpress Theme Check Requirements */
+.wp-caption {}
+.wp-caption-text {}
+.sticky {}
+.screen-reader-text {}
+.gallery-caption {}
+.bypostauthor {}
+.alignright { text-align: right; }
+.alignleft { text-align: left; }
+.aligncenter { text-align: center; }

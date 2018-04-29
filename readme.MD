@@ -36,9 +36,9 @@ Installation and Configuration Steps
 
     *Fields:*
 
-        Label | Name | Type
-        ----- | ---- | ----
-        Position | position | text
+    Label | Name | Type
+    ----- | ---- | ----
+    Position | position | text
 
     *Location:* Show this field group if {post type} {is equal to} {team}
 
@@ -46,14 +46,14 @@ Installation and Configuration Steps
 
     *Fields:*
 
-        Label | Name | Type
-        ----- | ---- | ----
-        Twitter | twitter | Text
-        Facebook | facebook | Text
-        Skype | skype | Text
-        LinkedIn | linkedin | Text
-        Google Plus | googleplus | Text
-        Email | email | Email
+    Label | Name | Type
+    ----- | ---- | ----
+    Twitter | twitter | Text
+    Facebook | facebook | Text
+    Skype | skype | Text
+    LinkedIn | linkedin | Text
+    Google Plus | googleplus | Text
+    Email | email | Email
 
     *Location:* Show this field group if {post type} {is equal to} {team}
 
@@ -61,9 +61,9 @@ Installation and Configuration Steps
 
     *Fields:*
 
-        Label | Name | Type
-        ----- | ---- | ----
-        Website | website | text
+    Label | Name | Type
+    ----- | ---- | ----
+    Website | website | text
 
     *Location:* Show this field group if {post type} {is equal to} {portfolio}
 
@@ -99,6 +99,7 @@ Installation and Configuration Steps
 
 
 1. Customize the Theme
+
     **Site Identity**
     	*Logo:* Add Logo
 
@@ -112,6 +113,7 @@ Installation and Configuration Steps
 
 
 1. Add Some Projects
+
     *Don't forget to mark four of them as "Featured"*
 
 

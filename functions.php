@@ -573,6 +573,11 @@ function mrp_initialize_theme() {
 
 }
 
+/**
+ * Create a new, empty page
+ *
+ * @param string $page_title - the page title to create
+ */
 function mrp_createpage( $page_title ) {
 	$page_slug = sanitize_title( $page_title );
 	$this_page = get_page_by_path( $page_slug, OBJECT, 'page' );
@@ -585,6 +590,9 @@ function mrp_createpage( $page_title ) {
 	return($page_id);
 }
 
+/**
+ * Register, create and add location of the default menu for our theme
+ */
 function mrp_create_menu() {
 	/* Check if my menu exists */
 	$menu_exists = wp_get_nav_menu_object( 'MRP Nav Menu' );

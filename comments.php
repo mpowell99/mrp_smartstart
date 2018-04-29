@@ -13,7 +13,10 @@
 	<h6 class="section-title">Comments (<?php comments_number( '0', '1', '%' ); ?>)</h6>
 	<ol class="comments-list">
         <?php
-            $comments = get_comments( array( 'post_id' => get_the_ID() ) );
+            $comments = get_comments( array(
+				'post_id' => get_the_ID(),
+				'status' => 'approve',
+			));
             foreach( $comments as $key => $comment ) {
         ?>
 

@@ -110,6 +110,11 @@ A sample theme developed to mirror the static HTML page for SmartStart
     **Contact Page Settings**
 
 
+1. Customize the Widgets
+
+    *Add a title and some text to the Text Widget*/
+
+    
 1. Add Some Team Members
 
 

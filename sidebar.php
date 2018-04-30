@@ -15,7 +15,7 @@ get_header(); ?>
         /* Add a class to the widget list */
         if ( function_exists( 'dynamic_sidebar' ) ) {
             ob_start();
-            dynamic_sidebar( 'sidebar-1' );
+            dynamic_sidebar( 'sidebar-mrp' );
             $sidebar = ob_get_contents();
             ob_end_clean();
 

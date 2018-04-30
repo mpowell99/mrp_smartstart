@@ -231,8 +231,8 @@ add_action( 'widgets_init', 'mrp_register_sidebar' );
 function mrp_register_sidebar() {
     register_sidebar(
 		$args = array(
-			'name'          => 'Sidebar 1',
-			'id'            => 'sidebar-1',
+			'name'          => 'Sidebar MRP',
+			'id'            => 'sidebar-mrp',
 			'description'   => 'Right-hand Sidebar on Blog Posts',
 			'before_widget' => '<div class="widget">',
 			'after_widget'  => '</div>',
@@ -571,6 +571,19 @@ function mrp_initialize_theme() {
 	wp_insert_term( 'Environment', 'category' );
 	wp_insert_term( 'Tips & Tricks', 'category' );
 
+	mrp_default_widgets();
+}
+
+function mrp_default_widgets () {
+    $new_active_widgets = array (
+        'sidebar-mrp' => array (
+            'categories-3',
+            'text-2',
+        ),
+    );
+
+    // save new widgets to DB
+    update_option('sidebars_widgets', $new_active_widgets);
 }
 
 /**

@@ -102,9 +102,11 @@ A sample theme developed to mirror the static HTML page for SmartStart
 1. Customize the Theme
 
     **Site Identity**
+
     	*Logo:* Add Logo
 
     **Custom Headers**
+
     	Provide appropriate headers and descriptions to each field.
 
     **Contact Page Settings**
@@ -112,9 +114,9 @@ A sample theme developed to mirror the static HTML page for SmartStart
 
 1. Customize the Widgets
 
-    *Add a title and some text to the Text Widget*/
+    *Add a title and some text to the Text Widget*
 
-    
+
 1. Add Some Team Members
 
 

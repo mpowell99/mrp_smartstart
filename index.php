@@ -43,14 +43,12 @@ get_header(); ?>
 			<div class="entry-meta">
 				<ul>
 					<li><a href="<?php esc_url( the_permalink() ); ?>"><span class="post-format">Permalink</span></a></li>
-					<li><span class="title">Posted:</span> <a href="
-						<?php
+					<li><span class="title">Posted:</span> <a href="<?php
 							$archive_year  = get_the_time( 'Y' );
 							$archive_month = get_the_time( 'm' );
 							$archive_day   = get_the_time( 'd' );
 							echo esc_url( get_day_link( $archive_year, $archive_month, $archive_day ) );
-						?>
-						"><?php the_date( 'M j Y' ); ?></a></li>
+						?>"><?php echo get_the_date( 'M j Y' ); ?></a></li>
 					<li><span class="title">Tags:</span> <?php the_tags( '' ); ?></li>
 					<li><span class="title">Comments:</span> <a href="<?php esc_url( the_permalink() ); ?>#comments"><?php comments_number( '0', '1', '%' ); ?></a></li>
 				</ul>

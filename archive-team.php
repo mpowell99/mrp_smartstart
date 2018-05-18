@@ -10,12 +10,6 @@
 get_header();
 
 // get team members
-// we call a new loop, to overwrite the "3 posts per page" default
-$args = array(
-    'post_type' => 'team',
-    'posts_per_page' => -1,
-);
-$loop = new WP_Query( $args );
 ?>
 
 	<header class="page-header">
@@ -33,10 +27,10 @@ $loop = new WP_Query( $args );
 
 
 	<?php
-		if ( $loop->have_posts() ) {
+		if ( have_posts() ) {
 			/* Start the Loop */
-			while ( $loop->have_posts() ) {
-				$loop->the_post();
+			while ( have_posts() ) {
+				the_post();
 	?>
 	<div class="team-member one-fourth">
 		<img src="<?php esc_url( the_post_thumbnail_url() ); ?>" alt="" class="photo">

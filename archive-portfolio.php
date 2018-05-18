@@ -10,12 +10,6 @@
 get_header();
 
 // get projects
-// we call a new loop, to overwrite the "3 posts per page" default
-$args = array(
-    'post_type' => 'portfolio',
-    'posts_per_page' => -1,
-);
-$loop = new WP_Query( $args );
 ?>
 
 	<header class="page-header">
@@ -48,10 +42,10 @@ $loop = new WP_Query( $args );
 	<section id="portfolio-items" class="clearfix">
 
 		<?php
-			if ( $loop->have_posts() ) {
+			if ( have_posts() ) {
 				/* Start the Loop */
-				while ( $loop->have_posts() ) {
-					$loop->the_post();
+				while ( have_posts() ) {
+					the_post();
 		?>
 		<article class="one-third <?php echo mrp_termlist( 'disciplines', ' ', TRUE ); ?>" data-categories="<?php echo mrp_termlist( 'discipline', ' ', TRUE ); ?>">
 

@@ -539,11 +539,10 @@ function mrp_initialize_theme() {
 	$blog_id      = mrp_createpage( 'Blog' );
 	$frontpage_id = mrp_createpage( 'Front Page' );
 
-	// Let's make sure we're showing the front page, and just 3 blog entires per page
+	// Let's make sure we're showing the front page
 	update_option( 'show_on_front', 'page' );
 	update_option( 'page_on_front', $frontpage_id );
 	update_option( 'page_for_posts', $blog_id );
-	update_option( 'posts_per_page', 3 );
 
 	// Let's set up our navigation menu
 	mrp_create_menu();
@@ -654,5 +653,23 @@ function mrp_create_menu() {
 		set_theme_mod( 'nav_menu_locations', $locations );
 	}
 }
+
+function mrp_posts_per_page( $query ) {
+    if ( is_admin() || ! $query->is_main_query() )
+        return;
+
+    if ( is_home() ) {
+        // Display only 1 post for the original blog archive
+        $query->set( 'posts_per_page', 3 );
+        return;
+    }
+
+    if ( is_post_type_archive( 'portfolio' ) ) {
+        // Display 12 posts for portfolio projects
+        $query->set( 'posts_per_page', 12 );
+        return;
+    }
+}
+add_action( 'pre_get_posts', 'mrp_posts_per_page', 1 );
 
 ?>
